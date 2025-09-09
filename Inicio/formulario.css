@@ -1,0 +1,253 @@
+.modal-overlay {
+  font-family: var(--fuente-principal);
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+form label,
+form input,
+form select {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+
+form {
+  background-color: var(--color-blanco);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 4px 12px var(--color-sombra);
+  max-width: 400px;
+  width: 100%;
+  z-index: 1000;
+}
+
+.Botones{
+  background-color: var(--color-primario);
+  color: var(--color-blanco);
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  border-radius: var(--radio-borde);
+  width: auto;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.campo {
+  margin-bottom: 16px;
+}
+
+input{
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: var(--radio-borde);
+  margin-bottom: 20px;
+}
+
+/* Estructura general de la tarjeta */
+.tarjeta {
+  background: white;
+  border: 2px solid var(--color-primario);
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Encabezado institucional */
+.encabezado-tarjeta {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo-tarjeta {
+  width: 40px;
+  vertical-align: middle;
+}
+
+.titulo-centro {
+  font-size: 16px;
+  margin: 5px 0;
+  color: var(--color-primario);
+}
+
+/* Frente de la tarjeta: imagen + datos */
+.fila-frente {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+
+
+.datos-alumno {
+  flex-grow: 1;
+}
+
+.datos-alumno h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.datos-alumno p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+.foto-alumno {
+  text-align: center;
+}
+
+.foto-alumno input {
+  margin-bottom: 10px;
+}
+
+.foto-alumno img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+/* Botones de acción */
+.acciones-ficha {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+#ficha-modelo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.tarjeta-dorso {
+  display: flex;
+  justify-content: flex-end; /* empuja el contenido a la derecha */
+  align-items: flex-start;   /* alinea arriba */
+  padding: 10px;
+  background-color: #fff;
+  height: 120px; /* o el alto que necesites */
+  box-sizing: border-box;
+}
+
+.qr-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.qr-code {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 5px;
+}
+
+
+
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #ficha-modelo, #ficha-modelo * {
+    visibility: visible;
+  }
+
+  #ficha-modelo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .acciones-ficha {
+    display: none !important;
+  }
+
+  .tarjeta {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .fila-frente {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .foto-alumno img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .datos-alumno {
+    text-align: center;
+  }
+
+  .acciones-ficha {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #btnImprimir{
+    display: none;
+  }
+}
+
+.modal-qr {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+
+
+

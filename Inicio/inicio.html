@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Aulas</title>
+    <link rel="icon" href="../Icon/Logo.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> <!--letra .titulo-->
+    <link rel="stylesheet" href="../estilos/variables.css">
+    <link rel="stylesheet" href="../estilos/estilos-comunes.css">
+    <link rel="stylesheet" href="Inicio.css"> 
+    <link rel="stylesheet" href="formulario.css">
+  </head>
+
+  <body class="body">
+         <!-- Encabezado con logo, texto, y título -->
+        <header class="Encabezado">
+          <div class="logo-texto">
+            <img src="../Icon/Logo.png" alt="Logo Centro Familiar Amigos de Jesús">
+            <span class="Texto_lateral">Centro Familiar Amigo de Jesús</span>
+          </div>
+        </header>
+        <!-- Botón de menú hamburguesa -->
+      <button id="menu-toggle" class="menu-hamburguesa">☰</button>
+      <div class="cerrar-sesion" id="cerrar-sesion" onclick="mostrarModalCerrarSesion()">
+        <img src="../Icon/cerrar.png" alt="Cerrar Sesión">
+      </div>
+      
+    
+
+      
+        <!-- Aulas organizadas por columnas -->
+        <div class="general">
+          <h1 class="titulo">Bienvenido al Sistema de Asistencia</h1>
+          <div id="menu-aulas" class="menu-lateral">
+            <h1 class="mensaje">Seleccione el aula:</h1><br>
+            <button onclick="direAula1y2()" class="Aulas_boton" name="1-2">Aula 1-2</button>
+            <button onclick="direAula3y4()" class="Aulas_boton"  name="3-4">Aula 3-4</button>
+            <button onclick="direAula5y6()"class="Aulas_boton" name="5-6">Aula 5-6</button>
+            <button onclick="direAula7y8()"class="Aulas_boton" name="7-8">Aula 7-8</button>
+            <button onclick="direAula9y12()"class="Aulas_boton" name="9-12">Aula 9-12</button>
+            <button onclick="direAuladelaCalma()"class="Aulas_boton" name="Aula">Aula de la calma</button>
+          </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="general_botones">
+          <button class="Agregar_boton" onclick="mostrarFormulario()">+ Agregar Nuevo Alumno</button>
+          <button class="Escanear_boton" onclick="abrirModalQR()">QR entrada</button>
+          <button class="Escanear_boton" onclick="abrirModalSalidaQR()">QR salida</button>
+          <button class="Agregar_manual" onclick="mostrarAsistencia()">Tomar asistencia</button>
+        </div>    
+        
+    <div id="modal" class="modal-overlay" style="display: none;">
+      <form id="miFormulario">
+        <div class="campo">
+          <label>Nombre del Alumno:</label>
+          <input  id="nombre" type="text" name="nombre" />
+        </div>
+        <div class="campo">
+          <label>Nombre del madre/padre o tutor:</label>
+          <input id="nombretutor" type="text" name="nombretutor"  />
+        </div>
+        <div class="campo">
+          <label>Teléfono:</label>
+          <input id="telefono" type="number" name="telefono"/>
+        </div>
+        <div class="campo">
+          <label for="aula">Seleccionar aula:</label>
+          <select id="aula" name="aula">
+            <option value="1-2">Aula 1-2</option>
+            <option value="3-4">Aula 3-4</option>
+            <option value="5-6">Aula 5-6</option>
+            <option value="7-8">Aula 7-8</option>
+            <option value="9-12">Aula 9-12</option>
+            <option value="calma">Aula de la calma</option>
+          </select>
+        </div>
+        <input class="acciones-ficha" type="file" id="foto-input" name="imagen" accept="image/*" onchange="cargarFoto(event)">
+        
+
+        <button class="Botones" type="button" onclick="guardarAlumnos()">Guardar</button>
+        <button id="btnImprimir" class="Botones" type="button" onclick="verFichaActual()">ver Ficha</button>
+        <div id="qr-container" style="margin-top: 20px;"></div>
+        <button class="Botones" type="button" onclick="cerrarformulario()">Cerrar</button>
+      </form>
+    </div>
+
+  
+    <!--modelo de imprecion-->
+    <div id="ficha-modelo" style="display:none;">
+      <div class="tarjeta">
+        <!-- Encabezado institucional -->
+        <div class="encabezado-tarjeta">
+          <img src="../Icon/Logo.png" alt="Logo" class="logo-tarjeta">
+          <h2 class="titulo-centro">Centro Familiar Amigo de Jesús</h2>
+          <h3 id="ficha-nombre"></h3>
+        </div>
+        <!-- Frente de la tarjeta -->
+      <div class="tarjeta-frente">
+        <div class="fila-frente">
+          <div class="foto-alumno">
+            <img id="ficha-imagen" />
+          </div>
+          <div class="datos-alumno">
+            <p><strong>Tutor:</strong> <span id="ficha-tutor"></span></p>
+            <p><strong>Teléfono:</strong> <span id="ficha-telefono"></span></p>
+            <p><strong>Aula:</strong> <span id="aula-alumno"></span></p>
+          </div>
+        </div>
+      </div>
+        <!-- Dorso de la tarjeta -->
+        <div class="tarjeta-dorso">
+          <div class="qr-wrapper">
+            <img id="ficha-qr" class="qr-code">
+          </div>
+        </div>
+
+        <!-- Botones de acción (ocultos al imprimir) -->
+        <div class="acciones-ficha">
+          <button class="Botones" type="button" onclick="imprimirFicha()">Imprimir</button>
+          <button class="Botones" type="button" onclick="cerrarFicha()">Cerrar</button>
+        </div>
+      </div>
+   </div>
+   
+
+    <div id="modalCerrarSesion" class="modal-overlay" style="display: none;">
+      <div class="modal-contenido">
+        <p>¿Desea cerrar sesión?</p>
+        <button class="Botones" onclick="cerrarSesion()">Confirmar</button>
+        <button class="Botones" onclick="cerrarModal()">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- BOTON PARA AGREGAR ASISTENCIA MANUALMENTE--->
+    <div class="modal-overlay" id="modal-asistencia" style="display: none;">
+      <form id="formAsistencia"  name="formAsistencia" autocomplete="off">
+        <label for="selector-aula">Seleccionar aula:</label>
+        <select id="selector-aula" required>
+
+          <option value="">-- Elegí un aula --</option>
+          <option value="1-2">Aula 1-2</option>
+          <option value="3-4">Aula 3-4</option>
+          <option value="5-6">Aula 5-6</option>
+          <option value="7-8">Aula 7-8</option>
+          <option value="9-12">Aula 9-12</option>
+          <option value="calma">Aula de la calma</option>
+        </select>
+        
+        <input type="text" id="input-buscar" placeholder="Buscar alumno por nombre…" autocomplete="off">
+        <!-- <ul id="resultados"></ul> -->
+        <div class="input-buscar">
+        <div id="sugerencias" class="dropdown"></div>
+        </div>
+        <!-- Necesarios para renderResultados / feedback -->
+        <ul id="resultados" aria-label="Resultados de alumnos"></ul>
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+
+        <button type="button" id="btn-guardar" class="Botones">Guardar asistencia</button>
+        <button type="button" class="Botones" onclick="cerrarAsis()">Cancelar</button>
+      </form>
+    </div>
+    <div id="modal-qr" class="modal-qr">
+      <div class="modal-contenido">
+        <h2>Escanear QR del alumno</h2>
+        <div id="qr-reader" style="width: 300px;"></div>
+        <button onclick="cerrarModalQR()" class="Botones">Cerrar</button>
+      </div>
+    </div>
+
+    <script src="agregar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- <script src="asisManual.js"></script>
+    <script src="../listagnral-aulas/listagral.js"></script>
+    <script src="../Asistencia/Ver_asistencia.js"></script>
+    <script src="inicio.js"></script>
+    <script src="cierreSecion.js"> </script> -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+  </body>
+</html>
+

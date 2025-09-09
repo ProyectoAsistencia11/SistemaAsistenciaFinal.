@@ -1,0 +1,138 @@
+/* RESET GLOBAL */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* BODY */
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-fondo);
+  font-family: var(--fuente-principal);
+  min-height: 100vh;
+}
+
+/* ENCABEZADO */
+.Encabezado {
+  margin-bottom: 50px;
+  width: 100%;
+  padding: 16px 24px;
+  background-color: var(--color-blanco);
+  box-shadow: 0 2px 6px var(--color-sombra);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-texto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-texto img {
+  height: 48px;
+}
+
+.Texto_lateral {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--color-texto);
+}
+
+.todo {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Estilo general de la tabla */
+#tabla-alumnos {
+  border-collapse: collapse;
+  margin-top: 20px;
+  /* font-family: 'Segoe UI', sans-serif; */
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+h1 {
+  font-size: 35px;
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Encabezado de la tabla */
+#tabla-alumnos thead {
+  background: none;
+  color: black;
+}
+
+#tabla-alumnos th {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 2px solid #00336611;
+}
+
+/* Filas de datos */
+#tabla-alumnos td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Alternancia de colores en filas */
+#tabla-alumnos tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#tabla-alumnos tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Botón de borrar */
+#tabla-alumnos button {
+  /* background-color: #d9534f;
+  color: white; */
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+#tabla-alumnos button:hover {
+  background-color: #c9922c;
+}
+
+.btn-volver {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.2s ease;
+}
+
+/* BOTÓN GENÉRICO */
+.boton {
+  background-color: var(--color-primario);
+  color: var(--color-blanco);
+  padding: 12px;
+  font-size: 15px;
+  border: none;
+  border-radius: var(--radio-borde);
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.boton:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+  outline: none;
+}
+

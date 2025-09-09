@@ -1,0 +1,19 @@
+:root {
+  /* Colores institucionales */
+  --color-primario: #3a76d0;
+  --color-primario-hover: #2c60a4;
+  --color-secundario: rgb(148, 255, 99);
+  --color-secundario-hover: #6fdf7e;
+  --color-fondo: #eef3fc;
+  --color-blanco: #ffffff;
+  --color-texto: #2c3e50;
+  --color-sombra: rgba(0, 0, 0, 0.1);
+
+  /* Tipografía */
+  --fuente-principal:'Inter', sans-serif;
+;
+
+  /* Espaciado */
+  --espaciado: 16px;
+  --radio-borde: 8px;
+}
